@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Nodo {
+struct Nodo {//crear nodo
     char tarea[50];
     int prioridad;
     struct Nodo* siguiente;
 };
 
-typedef struct ColaPrioridad {
-    struct Nodo* cabeza;
+typedef struct ColaPrioridad {//crear tipo de dato colaprioridad
+    struct Nodo* cabeza;//puntero que apunta a la cabeza
 } ColaPrioridad;
 
-ColaPrioridad* crearCola() {
-    ColaPrioridad* pq = (ColaPrioridad*)malloc(sizeof(ColaPrioridad));
+ColaPrioridad* crearCola() {//retorna un puntero
+    ColaPrioridad* pq = (ColaPrioridad*)malloc(sizeof(ColaPrioridad));//reservar memoria
     pq->cabeza = NULL;
     return pq;
 }
