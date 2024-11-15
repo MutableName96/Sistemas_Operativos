@@ -49,16 +49,17 @@ int main(int argc, char **argv)
         
     } else if (pid == 0) {
         printf("\nDivision\n");
-        double result = div(10,5); 
+        double result = div(500,5); 
 		printf("%f \n", result); 
-		printf("Proceso hijo %d , %d ",getpid(),pid);
+		printf("Proceso hijo %d ",getpid());
     } else {
         printf("Potencia\n");
         int result = pot(5,3);
         printf("%d \n",result);
-        printf("Proceso Padre %d , %d ",getpid(),pid);
-        printf("\n z------------------------------");
+        printf("Proceso Padre %d ",getpid());
+        printf("\n ------------------------------");
     }
-    //printf("The process ID is %dn", getpid());
+    
   return 0 ;
   }
+
