@@ -1,3 +1,4 @@
+//potencias y divisiones con recursividad
 #include <stdio.h>
 #include <unistd.h>
 
