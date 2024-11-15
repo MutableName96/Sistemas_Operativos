@@ -39,7 +39,7 @@ void insertar(ColaPrioridad* pq, char* tarea, int prioridad) {
 }
 
 char* eliminar(ColaPrioridad* pq, int* prioridad) {
-    if (pq->cabeza == NULL) {
+    if (pq->cabeza == NULL) {//verifica si la cola esta vacia
         return NULL;
     }
     struct Nodo* temp = pq->cabeza;
@@ -47,21 +47,25 @@ char* eliminar(ColaPrioridad* pq, int* prioridad) {
 
     *prioridad = temp->prioridad;
     char* tarea = strdup(temp->tarea);
+//liberar la memoria
     free(temp);
     return tarea;
 }
 
 char* peek(ColaPrioridad* pq) {
+// Verificar si la cola está vacía
     if (pq->cabeza == NULL) {
         return NULL;
     }
+// Retornar la tarea del nodo con mayor prioridad
     return pq->cabeza->tarea;
 }
 
+//checar si esta vacia
 int isEmpty(ColaPrioridad* pq) {
     return pq->cabeza == NULL;
 }
-
+//eliminar todo
 void liberarCola(ColaPrioridad* pq) {
     struct Nodo* actual = pq->cabeza;
     struct Nodo* siguiente;
@@ -81,11 +85,14 @@ int main() {
     insertar(pq, "Tarea 2", 2);
 
     printf("Tarea de mayor prioridad: %s\n", peek(pq));
-
+// Variable para almacenar la prioridad de la tarea eliminada
     int prioridad;
+// Mientras la cola no esté vacía, eliminar y mostrar tareas
     while (!isEmpty(pq)) {
+// Eliminar la tarea con la mayor prioridad y obtener su prioridad
         char* tarea = eliminar(pq, &prioridad);
         printf("Ejecutando: %s (Prioridad: %d)\n", tarea, prioridad);
+// Liberar la memoria de la tarea duplicada
         free(tarea);
     }
 
