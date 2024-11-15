@@ -1,1 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Nodo {
+    char tarea[50];
+    int prioridad;
+    struct Nodo* siguiente;
+};
+
+typedef struct ColaPrioridad {
+    struct Nodo* cabeza;
+} ColaPrioridad;
+
+ColaPrioridad* crearCola() {
+    ColaPrioridad* pq = (ColaPrioridad*)malloc(sizeof(ColaPrioridad));
+    pq->cabeza = NULL;
+    return pq;
+}
+
+void insertar(ColaPrioridad* pq, char* tarea, int prioridad) {
+    struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
+    strcpy(nuevoNodo->tarea, tarea);
+    nuevoNodo->prioridad = prioridad;
+    nuevoNodo->siguiente = NULL;
+
+    if (pq->cabeza == NULL || pq->cabeza->prioridad < prioridad) {
+        nuevoNodo->siguiente = pq->cabeza;
+        pq->cabeza = nuevoNodo;
+    } else {
+        struct Nodo* actual = pq->cabeza;
+        while (actual->siguiente != NULL && actual->siguiente->prioridad >= prioridad) {
+            actual = actual->siguiente;
+        }
+        nuevoNodo->siguiente = actual->siguiente;
+        actual->siguiente = nuevoNodo;
+    }
+}
+
+char* eliminar(ColaPrioridad* pq, int* prioridad) {
+    if (pq->cabeza == NULL) {
+        return NULL;
+    }
+    struct Nodo* temp = pq->cabeza;
+    pq->cabeza = pq->cabeza->siguiente;
+
+    *prioridad = temp->prioridad;
+    char* tarea = strdup(temp->tarea);
+    free(temp);
+    return tarea;
+}
+
+char* peek(ColaPrioridad* pq) {
+    if (pq->cabeza == NULL) {
+        return NULL;
+    }
+    return pq->cabeza->tarea;
+}
+
+int isEmpty(ColaPrioridad* pq) {
+    return pq->cabeza == NULL;
+}
+
+void liberarCola(ColaPrioridad* pq) {
+    struct Nodo* actual = pq->cabeza;
+    struct Nodo* siguiente;
+    while (actual != NULL) {
+        siguiente = actual->siguiente;
+        free(actual);
+        actual = siguiente;
+    }
+    free(pq);
+}
+
+int main() {
+    ColaPrioridad* pq = crearCola();
+
+    insertar(pq, "Tarea 1", 1);
+    insertar(pq, "Tarea 3", 3);
+    insertar(pq, "Tarea 2", 2);
+
+    printf("Tarea de mayor prioridad: %s\n", peek(pq));
+
+    int prioridad;
+    while (!isEmpty(pq)) {
+        char* tarea = eliminar(pq, &prioridad);
+        printf("Ejecutando: %s (Prioridad: %d)\n", tarea, prioridad);
+        free(tarea);
+    }
+
+    liberarCola(pq);
+
+    return 0;
+}
 
