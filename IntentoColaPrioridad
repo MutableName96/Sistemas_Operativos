@@ -81,7 +81,7 @@ int main() {
     ColaPrioridad* pq = crearCola();
 
     insertar(pq, "Tarea 1", 1);
-    insertar(pq, "Tarea 3", 3);
+    insertar(pq, "Tarea 3", 5);
     insertar(pq, "Tarea 2", 2);
 
     printf("Tarea de mayor prioridad: %s\n", peek(pq));
@@ -100,4 +100,3 @@ int main() {
 
     return 0;
 }
-
