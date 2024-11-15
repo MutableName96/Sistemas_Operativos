@@ -1,1 +1,50 @@
-p
+#include <stdio.h>
+#include <unistd.h>
+
+int suma (int a, int b);
+int pot(int a, int b){
+
+
+}
+
+
+
+
+double div(double a, double b){
+	double c=0;
+	
+	if(b==0){
+		printf("Error you cant divide by 0");
+		return 0;
+	}
+	if(a==0)
+	{
+		return 0;
+	}else
+	c++;
+	return c+div(a-b,b);
+}	
+
+int main(int argc, char **argv)
+{
+	
+    pid_t pid = fork(); 
+
+    if (pid < 0) {
+        perror("error al crear proceso");
+        
+    } else if (pid == 0) {
+        printf("\nDivision\n");
+        double result = div(10,5); 
+		printf("%f \n", result); 
+		printf("Proceso hijo %d , %d ",getpid(),pid);
+    } else {
+        printf("Potencia\n");
+        int result = pot(5,3);
+        printf("%d \n",result);
+        printf("Proceso Padre %d , %d ",getpid(),pid);
+        printf("\n z------------------------------");
+    }
+    //printf("The process ID is %dn", getpid());
+  return 0 ;
+  }
