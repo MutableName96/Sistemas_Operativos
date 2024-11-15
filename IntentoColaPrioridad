@@ -17,18 +17,19 @@ ColaPrioridad* crearCola() {//retorna un puntero
     pq->cabeza = NULL;
     return pq;
 }
-
+//insertar nodo
 void insertar(ColaPrioridad* pq, char* tarea, int prioridad) {
     struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
     strcpy(nuevoNodo->tarea, tarea);
     nuevoNodo->prioridad = prioridad;
     nuevoNodo->siguiente = NULL;
-
+// si la cola esta vacia o el nuevo nodo tiene mayor prioridad que la cabeza
     if (pq->cabeza == NULL || pq->cabeza->prioridad < prioridad) {
         nuevoNodo->siguiente = pq->cabeza;
         pq->cabeza = nuevoNodo;
     } else {
         struct Nodo* actual = pq->cabeza;
+//recorrer la lista
         while (actual->siguiente != NULL && actual->siguiente->prioridad >= prioridad) {
             actual = actual->siguiente;
         }
