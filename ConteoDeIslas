@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define fil 8
+#define col 8
+int matriz[fil][col];
+
+int generarNumero(){
+	return (rand() % 2);
+}
+
+void mostrarMatriz(){
+	for(int i=0; i<fil ;i++){
+		
+		for(int j=0; j<col;j++){
+			
+			printf("%d", matriz[i][j])	;		
+			}
+			printf("\n");
+
+		}
+	}
+void llenarMatriz(){
+	for(int i=0; i<fil ;i++){
+		
+		for(int j=0; j<col;j++){
+			
+			matriz[i][j]=generarNumero();
+			
+			}
+		}
+	}
+
+int main(){	
+  llenarMatriz();
+	mostrarMatriz();
+
+	return 0;
+}
