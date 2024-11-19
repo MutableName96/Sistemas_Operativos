@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define fil 8
 #define col 8
@@ -14,7 +15,7 @@ void mostrarMatriz(){
 		
 		for(int j=0; j<col;j++){
 			
-			printf("%d", matriz[i][j])	;		
+			printf("%d ", matriz[i][j])	;		
 			}
 			printf("\n");
 
@@ -30,10 +31,20 @@ void llenarMatriz(){
 			}
 		}
 	}
-
-int main(){	
-  llenarMatriz();
+void buscarIslas(){
+		for(int i=0; i<fil ;i++){
+		
+		for(int j=0; j<col;j++){
+						
+			}
+		}
+		
+	}
+	
+int main(){
+	srand(time(NULL));
+	llenarMatriz();
 	mostrarMatriz();
-
 	return 0;
 }
+
