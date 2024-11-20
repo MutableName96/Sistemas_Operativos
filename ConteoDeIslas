@@ -7,7 +7,8 @@
 #define col 8
 int matriz[fil][col];
 bool matrizV[fil][col];//matrizVisitados
-
+dx[4]={-1,1,0,0};//izquierda o deracha
+dy[4]={0,0,-1,1};//arriba o abajo
 
 void llenarMatrizV(){
 	
@@ -52,14 +53,10 @@ void llenarMatriz(){
 void algoritmoDFS(int x, int y){
 	matrizV[x][y]=true;//marcar como visitado
 	for(int i=0 ; i<4; i++){
-		int dx=x+1;//derecha
-		int dy=x+1;//up
-		int dix=x-1;//left
-		int ddy=y-1;//down
+		int fx = x + dx[i];
+		int fy = y + dy[i];
 		
-		if(dx=1){
-			algoritmoDFS()
-			}
+		algoritmoDFS(fx, fy);
 		}
 	printf("\n");
 
