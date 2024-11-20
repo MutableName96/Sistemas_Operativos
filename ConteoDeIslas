@@ -10,9 +10,6 @@ int matrizV[fil][col];//matrizVisitados
 int generarNumero(){
 	return (rand() % 2);
 }
-struct Nodo {
-	int valor;
-};
 
 void mostrarMatriz(){
 	for(int i=0; i<fil ;i++){
