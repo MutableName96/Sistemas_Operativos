@@ -7,8 +7,8 @@
 #define col 8
 int matriz[fil][col];
 bool matrizV[fil][col];//matrizVisitados
-dx[4]={-1,1,0,0};//izquierda o deracha
-dy[4]={0,0,-1,1};//arriba o abajo
+int dx[4]={-1,1,0,0};//izquierda o deracha
+int dy[4]={0,0,-1,1};//arriba o abajo
 
 void llenarMatrizV(){
 	
