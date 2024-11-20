@@ -52,8 +52,14 @@ void llenarMatriz(){
 void algoritmoDFS(int x, int y){
 	matrizV[x][y]=true;//marcar como visitado
 	for(int i=0 ; i<4; i++){
-		printf("%d",i);
+		int dx=x+1;//derecha
+		int dy=x+1;//up
+		int dix=x-1;//left
+		int ddy=y-1;//down
 		
+		if(dx=1){
+			algoritmoDFS()
+			}
 		}
 	printf("\n");
 
