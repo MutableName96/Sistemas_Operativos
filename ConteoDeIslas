@@ -5,6 +5,7 @@
 #define fil 8
 #define col 8
 int matriz[fil][col];
+int matrizV[fil][col];//matrizVisitados
 
 int generarNumero(){
 	return (rand() % 2);
@@ -36,11 +37,27 @@ void llenarMatriz(){
 		}
 	}
 	
-void buscarIslas(){
+	
+void marcarIslas(){
+	for(int i=0; i<fil ;i++){
+			for(int j=0; j<col;j++){
+				matrizV[i][j]=1;
+			}
+		}
+
+}
+	
+int buscarIslas(){
+	int contador = 0;
 		for(int i=0; i<fil ;i++){
 		
-		for(int j=0; j<col;j++){
-						
+			for(int j=0; j<col;j++){
+				
+				if(matriz[i][j] == 1){
+					marcarIslas(i,j);
+					contador++;
+					
+					} 					
 			}
 		}
 		
@@ -50,5 +67,6 @@ int main(){
 	srand(time(NULL));
 	llenarMatriz();
 	mostrarMatriz();
+	buscarIslas();
 	return 0;
 }
