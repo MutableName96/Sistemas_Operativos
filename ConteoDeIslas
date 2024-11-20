@@ -11,6 +11,7 @@ int generarNumero(){
 	return (rand() % 2);
 }
 
+
 void mostrarMatriz(){
 	for(int i=0; i<fil ;i++){
 		
@@ -45,18 +46,19 @@ void marcarIslas(){
 }
 	
 int buscarIslas(){
-	int contador = 0;
+	int cont = 0;
 		for(int i=0; i<fil ;i++){
 		
 			for(int j=0; j<col;j++){
 				
-				if(matriz[i][j] == 1){
+				if(matriz[i][j] == 1 && matizV[i][j]!=0){
 					marcarIslas(i,j);
-					contador++;
+					cont++;
 					
 					} 					
 			}
 		}
+		return cont;
 		
 	}
 	
@@ -64,6 +66,6 @@ int main(){
 	srand(time(NULL));
 	llenarMatriz();
 	mostrarMatriz();
-	buscarIslas();
+	printf("Total de Islas: %d",buscarIslas());
 	return 0;
 }
