@@ -3,13 +3,16 @@
 #include <time.h>
 #include <stdbool.h>
 
-#define fil 8
-#define col 8
+#define fil 8//tamaño de la matriz
+#define col 8//
+
 int matriz[fil][col];
 bool matrizV[fil][col];//matrizVisitados
+
 int dx[4]={-1,1,0,0};//izquierda o deracha
 int dy[4]={0,0,-1,1};//arriba o abajo
 
+//inicialisar la matriz de visitados
 void llenarMatrizV(){
 	
 	for(int i=0; i<fil ;i++){
@@ -26,7 +29,7 @@ int generarNumero(){
 	return (rand() % 2);
 }
 
-
+//printf
 void mostrarMatriz(){
 	for(int i=0; i<fil ;i++){
 		
@@ -39,6 +42,7 @@ void mostrarMatriz(){
 		}
 	}
 	
+//rellenar la matriz aleatoriamente	
 void llenarMatriz(){
 	for(int i=0; i<fil ;i++){
 		
@@ -49,7 +53,7 @@ void llenarMatriz(){
 			}
 		}
 	}
-	
+//buscar en profundidad hasta el final de una rama
 void algoritmoDFS(int x, int y){
 	matrizV[x][y]=true;//marcar como visitado
 	for(int i=0 ; i<4; i++){
@@ -65,7 +69,7 @@ void algoritmoDFS(int x, int y){
 	
 	
 
-	
+//contar cuantas islas ecuentra
 int buscarIslas(){
 	int cont = 0;
 	llenarMatrizV();
