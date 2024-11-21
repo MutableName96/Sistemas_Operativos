@@ -55,10 +55,11 @@ void algoritmoDFS(int x, int y){
 	for(int i=0 ; i<4; i++){
 		int fx = x + dx[i];
 		int fy = y + dy[i];
-		if(fx>=0 && fx<Fil && fy>=0 && fy<Col && matrizV[fx][fy]!=true){
-		algoritmoDFS(fx, fy);
-		}
 		
+		if(fx>=0 && fx<fil && fy>=0 && fy<col && matrizV[fx][fy]!=false){+
+			printf("entre");
+			algoritmoDFS(fx, fy);
+			}
 		}
 	printf("\n");
 
