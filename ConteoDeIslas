@@ -56,12 +56,10 @@ void algoritmoDFS(int x, int y){
 		int fx = x + dx[i];
 		int fy = y + dy[i];
 		
-		if(fx>=0 && fx<fil && fy>=0 && fy<col && matrizV[fx][fy]!=false){+
-			printf("entre");
+		if(fx>=0 && fx<fil && fy>=0 && fy<col && matrizV[fx][fy]!=true){
 			algoritmoDFS(fx, fy);
 			}
 		}
-	printf("\n");
 
 	}
 	
@@ -75,7 +73,7 @@ int buscarIslas(){
 		
 			for(int j=0; j<col;j++){
 				
-				if(matriz[i][j] == 1 && matrizV[i][j]!=true){
+				if(matriz[i][j] == 1 && matrizV[i][j]==false){
 					algoritmoDFS(i,j);
 					cont++;
 					
