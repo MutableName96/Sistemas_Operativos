@@ -2,17 +2,17 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-proceso memoria[100];
+
 
 typedef struct proceso{
 	int PID;
-	char estado[15];
 	int prioridad;
-	
-	
-	
+	int tamaño;
 	}proceso;
+
+void asignarParticiones(){
 	
+	}
 void asignarEspacio(){
 	
 	}
@@ -20,10 +20,13 @@ void asignarEspacio(){
 void liberarEspacio(){
 	
 	}
+void mostrarMemoria(){
+	}
 	
 
 int main()
 {
+	proceso memoria[100];
 	int opcion = 0;
 	do{
 		
@@ -31,16 +34,19 @@ int main()
 		printf("1.- Asignar particiones\n");
 		printf("2.- Asignar Espaio de memoria\n");
 		printf("3.- Liberar Espaio de memoria\n");
+		printf("4.- Mostrar Espacios de memoria\n");
 		printf("4.- Salir\n");
 		printf("--------------------------------\n");
 		scanf("%d",&opcion);
 		switch(opcion){
 			case 1:
-				
+			
 				break;
 			case 2:
+			
 				break;
 			case 3:
+			
 				break;
 			default:
 			printf("Opcion invalida");
@@ -50,7 +56,7 @@ int main()
 		
 	
 	}
-	while(opcion!=4);
+	while(opcion!=5);
 	
 	return 0;
 }
