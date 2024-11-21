@@ -1,0 +1,57 @@
+
+#include <stdio.h>
+#include <stdbool.h>
+
+proceso memoria[100];
+
+typedef struct proceso{
+	int PID;
+	char estado[15];
+	int prioridad;
+	
+	
+	
+	}proceso;
+	
+void asignarEspacio(){
+	
+	}
+
+void liberarEspacio(){
+	
+	}
+	
+
+int main()
+{
+	int opcion = 0;
+	do{
+		
+		printf("------------- Menu -------------\n");
+		printf("1.- Asignar particiones\n");
+		printf("2.- Asignar Espaio de memoria\n");
+		printf("3.- Liberar Espaio de memoria\n");
+		printf("4.- Salir\n");
+		printf("--------------------------------\n");
+		scanf("%d",&opcion);
+		switch(opcion){
+			case 1:
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+			printf("Opcion invalida");
+				
+			
+			}
+		
+	
+	}
+	while(opcion!=4);
+	
+	return 0;
+}
+
