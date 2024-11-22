@@ -141,8 +141,13 @@ void mostrarMemoria(){
 		if(memoria[i].PID !=-1){
 			printf("PID: %d NumeroParticion: %d TamañoParticion:(%dMB)\n",memoria[i].PID,i+1,memoria[i].tamaño);
 			p=false;
-			}
+			}else if(memoria[i].tamaño>0){
+				printf("Particion: %d libre\n",i+1);
+
+				}
+			
 		}
+	
 
 		if(p){
 			printf("No hay procesos que mostrar\n");
@@ -171,24 +176,27 @@ int main()
 				asignarParticiones(tamañoP);
 			
 				break;
+				
 			case 2:
 			asignarEspacio();
 			
 				break;
+				
 			case 3:
 			mostrarMemoria();
 			if(Hayprocesos){
 				liberarEspacio();
 				}
-			
-			
 				break;
+				
 			case 4:
 			mostrarMemoria();
 				break;
+				
 			case 5:
 				return 0;
 				break;
+				
 			default:
 			printf("Opcion invalida");
 				
@@ -197,7 +205,7 @@ int main()
 		
 	
 	}
-	while(opcion!=5);
+	while(true);
 	
 	return 0;
 }
