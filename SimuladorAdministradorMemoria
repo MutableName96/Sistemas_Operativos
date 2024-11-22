@@ -2,22 +2,64 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#define tMem 10
 
-
+int tamañoP=0;
 typedef struct proceso{
 	int PID;
-	int prioridad;
 	int tamaño;
 	}proceso;
 
+	proceso memoria[tMem];
+
 void asignarParticiones(){
-	for(int i = 0 ;i<; i++;){
+	int sump = 0;
+	int temp = 0;
+	int c = -1;
+	for(int i = 0 ;i<tamañoP; i++){
+		c++;
+		if (sump >= tMem) { 
+            printf("Memoria full, no es posible asignar mas particiones\n");
+            tamañoP = c;
+            break;
+        }
+		do {
+            printf("Tamaño de la partición %d (MB): ", (i + 1));
+            scanf("%d", &temp);
+
+            if (sump + temp > tMem) {
+                printf("Error: La partición excede el tamaño total de memoria (%d MB).\n", tMem);
+                printf("Espacio disponible restante: %d MB.\n", tMem - sump);
+            } else {
+                memoria[i].tamaño = temp;
+                sump += temp; 
+                break;
+            }
+		}while (1); 
+
+		}
+	}
+void asignarEspacio(){
+	int pid;
+	int size;
+	
+	printf("Id de proceso: ");
+	scanf("%d",&pid);
+	printf("Tamaño deñ proceso(MB): ");
+	scanf("%d",&size);
+	
+	for(int i = 0; i< tamañoP;i++){
+		if(memoria[i].PID==-1 && memoria[i].tamaño<=size){
+			memoria	[i].PID=pid;
+			printf("Proceso %d asignado a la partición %d\n", pid, i + 1);
 		}
 	
 	}
-void asignarEspacio(){
 	
+			
 	}
+			
+	
 
 void liberarEspacio(){
 	
@@ -28,7 +70,6 @@ void mostrarMemoria(){
 
 int main()
 {
-	proceso memoria[100];
 	int opcion = 0;
 	do{
 		
@@ -40,11 +81,16 @@ int main()
 		printf("5.- Salir\n");
 		printf("--------------------------------\n");
 		scanf("%d",&opcion);
+		printf("\n");
 		switch(opcion){
 			case 1:
+			printf("Seleccione el Maximo de particion: ");
+			scanf("%d",&tamañoP);
+				asignarParticiones(tamañoP);
 			
 				break;
 			case 2:
+			asignarEspacio();
 			
 				break;
 			case 3:
